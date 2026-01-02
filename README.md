@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ignite Shop
 
-## Getting Started
+<p align="center">
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-8257E5?style=for-the-badge" />
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-%3E%3D24.0.0-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16.1.1-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img alt="Vercel" src="https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+ <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/Robson16/ignite-shop/ci.yml?style=for-the-badge&label=build&logo=github&color=8257E5"/>
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-8257E5?style=for-the-badge" />
+</p>
 
-First, run the development server:
+<p align="center">
+  <img alt="Capa do projeto Ignite Shop" title="Ignite Shop" src="./cover.png" />
+</p>
+
+## Descrição
+
+Aplicação de marketplace.
+
+## Começar
+
+Pré-requisitos:
+
+- Node.js 24+ e npm/yarn/pnpm
+
+Instalação:
+
+```bash
+npm install
+```
+
+Execução em desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000 no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build para produção:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Estrutura
 
-To learn more about Next.js, take a look at the following resources:
+- app/ — páginas e layout (App Router)
+- public/ — arquivos estáticos
+- README.md, package.json, next.config.ts — configuração do projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Protótipo e especificações do layout estão disponíveis no Figma:
 
-## Deploy on Vercel
+<a href="https://www.figma.com/design/e29rQfJ0L2sr3z0sk9a2mx/" target="_blank">
+  <img alt="Link para o Figma" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%23F24E1E?style=for-the-badge&logo=figma">
+</a>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Abra o link para ver telas, fluxo e espaçamentos usados no projeto.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts úteis
+
+- `npm run dev` — executa em modo desenvolvedor
+- `npm run build` — compila para produção
+- `npm start` — inicia o servidor de produção
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+---
+
+Feito com 💜 por <a href="https://github.com/Robson16/">Robson H. Rodrigues</a>
