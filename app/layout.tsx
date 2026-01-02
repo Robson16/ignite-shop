@@ -1,3 +1,18 @@
+import { Metadata } from "next";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  variable: "--font-roboto-sans",
+  weight: ['400','700'],
+  display: 'swap',
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Ignite Shop",
+  description: "Aplicação de marketplace",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -5,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body cz-shortcut-listen="true">
+      <body 
+        className={`${roboto.className} antialiased`}
+        cz-shortcut-listen="true"
+      >
         {children}
       </body>
     </html>
