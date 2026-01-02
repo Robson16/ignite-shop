@@ -1,7 +1,7 @@
 import { styled } from '@/stitches.config'
 
 const Button = styled('button', {
-  backgroundColor: '$rocketseat',
+  backgroundColor: '$green500',
   fontSize: '3rem',
 })
 

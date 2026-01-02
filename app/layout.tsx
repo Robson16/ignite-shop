@@ -1,6 +1,9 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import { getCssText } from '@/stitches.config'
+import { globalStyles } from './global'
+
+globalStyles()
 
 const roboto = Roboto({
   variable: '--font-roboto-sans',
@@ -28,7 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${roboto.className} antialiased`}
+        className={`${roboto.variable} antialiased`}
         cz-shortcut-listen="true"
       >
         {children}
