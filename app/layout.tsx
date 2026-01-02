@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import { getCssText } from '@/stitches.config'
 
 const roboto = Roboto({
   variable: '--font-roboto-sans',
@@ -20,6 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
+      <head>
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }}
+        />
+      </head>
       <body
         className={`${roboto.className} antialiased`}
         cz-shortcut-listen="true"
