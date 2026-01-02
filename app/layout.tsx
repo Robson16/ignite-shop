@@ -1,31 +1,31 @@
-import { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Metadata } from 'next'
+import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
-  variable: "--font-roboto-sans",
-  weight: ['400','700'],
+  variable: '--font-roboto-sans',
+  weight: ['400', '700'],
   display: 'swap',
-  subsets: ["latin"],
-});
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "Ignite Shop",
-  description: "Aplicação de marketplace",
-};
+  title: 'Ignite Shop',
+  description: 'Aplicação de marketplace',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-br">
-      <body 
+      <body
         className={`${roboto.className} antialiased`}
         cz-shortcut-listen="true"
       >
         {children}
       </body>
     </html>
-  );
+  )
 }

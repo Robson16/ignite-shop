@@ -1,5 +1,3 @@
 export default function SuccessPage() {
-  return (
-    <h1>Compra com sucesso!</h1>
-  )
+  return <h1>Compra com sucesso!</h1>
 }
