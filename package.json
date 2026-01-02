@@ -1,0 +1,49 @@
+{
+  "name": "ignite-shop",
+  "description": "Order and delivery management dashboard for pizzerias.",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "homepage": "",
+  "author": {
+    "name": "Robson H. Rodrigues",
+    "url": "https://github.com/Robson16"
+  },
+  "keywords": [
+    "ignite",
+    "react",
+    "typescript",
+    "rocketseat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+"engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "eslint": "9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "4",
+    "typescript": "5"
+  }
+}
