@@ -1,7 +1,10 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
-import { getCssText } from '@/stitches.config'
-import { globalStyles } from './global'
+import { getCssText } from '@/app/_styles/stitches.config'
+import { globalStyles } from '@/app/_styles/global'
+
+import logoImg from './_assets/logo.svg'
+import { Container, Header } from './_styles/pages/layout'
 
 globalStyles()
 
@@ -34,7 +37,13 @@ export default function RootLayout({
         className={`${roboto.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        {children}
+        <Container>
+          <Header>
+            <img src={logoImg.src} alt="Ignite Shop" />
+          </Header>
+
+          {children}
+        </Container>
       </body>
     </html>
   )
