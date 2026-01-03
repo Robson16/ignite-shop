@@ -29,10 +29,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check-up": "npm run format && npm run lint"
+    "check-up": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "@stitches/react": "1.2.8",
@@ -47,6 +48,7 @@
     "eslint": "9",
     "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-simple-import-sort": "12.1.1",
     "prettier": "3.7.4",
     "typescript": "5"
   }

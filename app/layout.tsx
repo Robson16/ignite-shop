@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
-import { getCssText } from '@/app/_styles/stitches.config'
+import Image from 'next/image'
+
 import { globalStyles } from '@/app/_styles/global'
+import { getCssText } from '@/app/_styles/stitches.config'
 
 import logoImg from './_assets/logo.svg'
 import { Container, Header } from './_styles/pages/layout'
@@ -39,7 +41,7 @@ export default function RootLayout({
       >
         <Container>
           <Header>
-            <img src={logoImg.src} alt="Ignite Shop" />
+            <Image src={logoImg} alt="Ignite Shop" />
           </Header>
 
           {children}
