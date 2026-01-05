@@ -1,0 +1,11 @@
+import Stripe from 'stripe'
+
+export const stripe = new Stripe(
+  process.env.STRIPE_SECRET_KEY || 'api_key_placeholder',
+  {
+    apiVersion: '2025-12-15.clover',
+    appInfo: {
+      name: 'Ignite Shop',
+    },
+  },
+)

@@ -1,16 +1,24 @@
-import shirt1 from './_assets/t-shirts/1.png'
-import shirt2 from './_assets/t-shirts/2.png'
-import shirt3 from './_assets/t-shirts/3.png'
+import Stripe from 'stripe'
+
 import { ProductSlider } from './_components/ProductSlider'
+import { stripe } from './_services/stripe'
 import { HomeContainer } from './_styles/pages/home'
 
 export default async function Home() {
-  const products = [
-    { id: '1', name: 'Camiseta X', imageUrl: shirt1, price: 'R$ 79,90' },
-    { id: '2', name: 'Camiseta Y', imageUrl: shirt2, price: 'R$ 79,90' },
-    { id: '3', name: 'Camiseta Z', imageUrl: shirt3, price: 'R$ 89,90' },
-    { id: '4', name: 'Camiseta W', imageUrl: shirt1, price: 'R$ 69,90' },
-  ]
+  const response = await stripe.products.list({
+    expand: ['data.default_price'],
+  })
+
+  const products = response.data.map((product) => {
+    const price = product.default_price as Stripe.Price
+
+    return {
+      id: product.id,
+      name: product.name,
+      imageUrl: product.images[0],
+      price: price.unit_amount || 0,
+    }
+  })
 
   return (
     <HomeContainer>

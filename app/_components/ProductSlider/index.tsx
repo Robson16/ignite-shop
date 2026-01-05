@@ -3,15 +3,15 @@
 import 'keen-slider/keen-slider.min.css'
 
 import { useKeenSlider } from 'keen-slider/react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { Product, ProductSliderContainer } from './styles'
 
 interface Product {
   id: string
   name: string
-  imageUrl: StaticImageData
-  price: string
+  imageUrl: string
+  price: number
 }
 
 interface ProductSliderProps {
@@ -39,7 +39,12 @@ export function ProductSlider({ products }: ProductSliderProps) {
 
           <footer>
             <strong>{product.name}</strong>
-            <span>{product.price}</span>
+            <span>
+              {new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              }).format(product.price / 100)}
+            </span>
           </footer>
         </Product>
       ))}
