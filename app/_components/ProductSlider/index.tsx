@@ -11,7 +11,7 @@ interface Product {
   id: string
   name: string
   imageUrl: string
-  price: number
+  price: string
 }
 
 interface ProductSliderProps {
@@ -39,12 +39,7 @@ export function ProductSlider({ products }: ProductSliderProps) {
 
           <footer>
             <strong>{product.name}</strong>
-            <span>
-              {new Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(product.price / 100)}
-            </span>
+            <span>{product.price}</span>
           </footer>
         </Product>
       ))}
