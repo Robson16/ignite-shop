@@ -33,10 +33,10 @@ const getProduct = unstable_cache(
   { revalidate: 3600 }, // 1 hour
 )
 
-export const dynamicParams = false
+export const dynamicParams = true
 
 export async function generateStaticParams() {
-  return [{ id: 'prod_TjjtIsuygSy0SZ' }]
+  return []
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
