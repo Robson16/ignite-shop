@@ -4,6 +4,7 @@ import 'keen-slider/keen-slider.min.css'
 
 import { useKeenSlider } from 'keen-slider/react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Product, ProductSliderContainer } from './styles'
 
@@ -29,19 +30,21 @@ export function ProductSlider({ products }: ProductSliderProps) {
   return (
     <ProductSliderContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => (
-        <Product className="keen-slider__slide" key={product.id}>
-          <Image
-            src={product.imageUrl}
-            width={520}
-            height={480}
-            alt={product.name}
-          />
+        <Link href={`/product/${product.id}`} key={product.id}>
+          <Product className="keen-slider__slide">
+            <Image
+              src={product.imageUrl}
+              width={520}
+              height={480}
+              alt={product.name}
+            />
 
-          <footer>
-            <strong>{product.name}</strong>
-            <span>{product.price}</span>
-          </footer>
-        </Product>
+            <footer>
+              <strong>{product.name}</strong>
+              <span>{product.price}</span>
+            </footer>
+          </Product>
+        </Link>
       ))}
     </ProductSliderContainer>
   )
