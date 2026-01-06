@@ -36,7 +36,11 @@ const getProduct = unstable_cache(
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-  return []
+  const products = await stripe.products.list({ limit: 3 })
+
+  return products.data.map((product) => ({
+    id: product.id,
+  }))
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

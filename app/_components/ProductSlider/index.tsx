@@ -30,7 +30,7 @@ export function ProductSlider({ products }: ProductSliderProps) {
   return (
     <ProductSliderContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => (
-        <Link href={`/product/${product.id}`} key={product.id}>
+        <Link href={`/product/${product.id}`} key={product.id} prefetch={false}>
           <Product className="keen-slider__slide">
             <Image
               src={product.imageUrl}
