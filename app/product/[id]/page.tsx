@@ -12,6 +12,8 @@ interface ProductPageProps {
 
 const getProduct = unstable_cache(
   async (productId: string) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     const product = await stripe.products.retrieve(productId, {
       expand: ['default_price'],
     })

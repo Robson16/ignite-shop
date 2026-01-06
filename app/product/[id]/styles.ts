@@ -1,4 +1,14 @@
-import { styled } from '@/app/_styles/stitches.config'
+import { keyframes, styled } from '@/app/_styles/stitches.config'
+
+const skeletonLoading = keyframes({
+  '0%': { backgroundColor: '$gray800' },
+  '100%': { backgroundColor: '$gray700' },
+})
+
+export const SkeletonItem = styled('div', {
+  animation: `${skeletonLoading} 1s linear infinite alternate`,
+  borderRadius: 8,
+})
 
 export const ProductContainer = styled('main', {
   display: 'grid',
