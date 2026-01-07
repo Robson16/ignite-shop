@@ -2,6 +2,7 @@ import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
 import Stripe from 'stripe'
 
+import BuyButton from '@/app/_components/BuyButton'
 import { stripe } from '@/app/_services/stripe'
 
 import { ImageContainer, ProductContainer, ProductDetails } from './styles'
@@ -12,8 +13,6 @@ interface ProductPageProps {
 
 const getProduct = unstable_cache(
   async (productId: string) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
     const product = await stripe.products.retrieve(productId, {
       expand: ['default_price'],
     })
@@ -29,6 +28,7 @@ const getProduct = unstable_cache(
         currency: 'BRL',
       }).format((price.unit_amount || 0) / 100),
       description: product.description,
+      defaultPriceId: price.id,
     }
   },
   ['product-detail'], // Cache key
@@ -61,7 +61,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <p>{product.description}</p>
 
-        <button>Comprar agora</button>
+        <BuyButton defaultPriceId={product.defaultPriceId} />
       </ProductDetails>
     </ProductContainer>
   )

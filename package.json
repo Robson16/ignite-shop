@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@stitches/react": "1.2.8",
+    "axios": "1.13.2",
     "keen-slider": "6.8.6",
     "next": "16.1.1",
     "react": "19.2.3",

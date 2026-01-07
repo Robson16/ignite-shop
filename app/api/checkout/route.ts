@@ -1,0 +1,33 @@
+import { NextResponse } from 'next/server'
+
+import { stripe } from '@/app/_services/stripe'
+
+export async function POST(request: Request) {
+  const { priceId } = await request.json()
+
+  if (!priceId) {
+    return NextResponse.json({ error: 'Price ID not found.' }, { status: 400 })
+  }
+
+  const successUrl = `${process.env.NEXT_URL}/success`
+  const cancelUrl = `${process.env.NEXT_URL}/`
+
+  const checkoutSession = await stripe.checkout.sessions.create({
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    mode: 'payment',
+    line_items: [
+      {
+        price: priceId,
+        quantity: 1,
+      },
+    ],
+  })
+
+  return NextResponse.json(
+    {
+      checkoutUrl: checkoutSession.url,
+    },
+    { status: 201 },
+  )
+}
