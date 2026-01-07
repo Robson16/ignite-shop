@@ -1,61 +1,63 @@
-import { styled } from '@/app/_styles/stitches.config'
+'use client'
 
-export const ProductSliderContainer = styled('div', {
-  minHeight: 656,
-})
+import styled from 'styled-components'
 
-export const Product = styled('div', {
-  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-  borderRadius: 8,
-  cursor: 'pointer',
-  position: 'relative',
-  overflow: 'hidden',
+export const ProductSliderContainer = styled.div`
+  min-height: 656px;
+`
 
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+export const Product = styled.div`
+  background: linear-gradient(180deg, #1ea483 0%, #7465d4 100%);
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 
-  img: {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'cover',
-  },
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  footer: {
-    position: 'absolute',
-    bottom: '0.25rem',
-    left: '0.25rem',
-    right: '0.25rem',
-    padding: '2rem',
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 
-    borderRadius: 6,
+  footer {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.25rem;
+    right: 0.25rem;
+    padding: 2rem;
 
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    border-radius: 6px;
 
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    transform: 'translateY(110%)',
-    opacity: 0,
-    transition: 'all 0.2s ease-in-out',
+    background-color: rgba(0, 0, 0, 0.6);
 
-    strong: {
-      fontSize: '$lg',
-      color: '$gray100',
-    },
+    transform: translateY(110%);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
 
-    span: {
-      fontSize: '$xl',
-      fontWeight: 'bold',
-      color: '$green300',
-    },
-  },
+    strong {
+      font-size: ${({ theme }) => theme.fontSizes.lg};
+      color: ${({ theme }) => theme.colors.gray100};
+    }
 
-  '&:hover': {
-    footer: {
-      transform: 'translateY(0%)',
-      opacity: 1,
-    },
-  },
-})
+    span {
+      font-size: ${({ theme }) => theme.fontSizes.xl};
+      font-weight: bold;
+      color: ${({ theme }) => theme.colors.green300};
+    }
+  }
+
+  &:hover {
+    footer {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+`
