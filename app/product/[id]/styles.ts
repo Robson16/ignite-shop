@@ -1,62 +1,68 @@
-import { keyframes, styled } from '@/app/_styles/stitches.config'
+'use client'
 
-const skeletonLoading = keyframes({
-  '0%': { backgroundColor: '$gray800' },
-  '100%': { backgroundColor: '$gray700' },
-})
+import styled, { keyframes } from 'styled-components'
 
-export const SkeletonItem = styled('div', {
-  animation: `${skeletonLoading} 1s linear infinite alternate`,
-  borderRadius: 8,
-})
+const skeletonLoading = keyframes`
+  0% { 
+    background-color: ${({ theme }) => theme.colors.gray800}; 
+  }
+  100% { 
+    background-color: ${({ theme }) => theme.colors.gray700}; 
+  }
+`
 
-export const ProductContainer = styled('main', {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  alignItems: 'stretch',
-  gap: '4rem',
+export const SkeletonItem = styled.div`
+  animation: ${skeletonLoading} 1s linear infinite alternate;
+  border-radius: 8px;
+`
 
-  maxWidth: 1180,
-  margin: '0 auto',
-})
+export const ProductContainer = styled.main`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 4rem;
 
-export const ImageContainer = styled('div', {
-  width: '100%',
-  maxWidth: 576,
-  height: 656,
-  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-  borderRadius: 8,
-  padding: '0.25rem',
+  max-width: 1180px;
+  margin: 0 auto;
+`
 
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+export const ImageContainer = styled.div`
+  width: 100%;
+  max-width: 576px;
+  height: 656px;
+  background: linear-gradient(180deg, #1ea483 0%, #7465d4 100%);
+  border-radius: 8px;
+  padding: 0.25rem;
 
-  img: {
-    objectFit: 'cover',
-  },
-})
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-export const ProductDetails = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
+  img {
+    object-fit: cover;
+  }
+`
 
-  h1: {
-    fontSize: '$2xl',
-    color: '$gray300',
-  },
+export const ProductDetails = styled.div`
+  display: flex;
+  flex-direction: column;
 
-  span: {
-    marginTop: '1rem',
-    display: 'block',
-    fontSize: '$2xl',
-    color: '$green300',
-  },
+  h1 {
+    font-size: ${({ theme }) => theme.fontSizes['2xl']};
+    color: ${({ theme }) => theme.colors.gray300};
+  }
 
-  p: {
-    marginTop: '2.5rem',
-    fontSize: '$md',
-    lineHeight: 1.6,
-    color: '$gray300',
-  },
-})
+  span {
+    margin-top: 1rem;
+    display: block;
+    font-size: ${({ theme }) => theme.fontSizes['2xl']};
+    color: ${({ theme }) => theme.colors.green300};
+  }
+
+  p {
+    margin-top: 2.5rem;
+    font-size: ${({ theme }) => theme.fontSizes.md};
+    line-height: 1.6;
+    color: ${({ theme }) => theme.colors.gray300};
+  }
+`
