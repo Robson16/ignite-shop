@@ -36,18 +36,19 @@
     "check-up": "npm run format && npm run lint:fix"
   },
   "dependencies": {
-    "@stitches/react": "1.2.8",
     "axios": "1.13.2",
     "keen-slider": "6.8.6",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "stripe": "20.1.0"
+    "stripe": "20.1.0",
+    "styled-components": "6.2.0"
   },
   "devDependencies": {
     "@types/node": "20",
     "@types/react": "19",
     "@types/react-dom": "19",
+    "@types/styled-components": "5.1.36",
     "eslint": "9",
     "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "10.1.8",

@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     rules: {
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
   eslintConfigPrettier,
