@@ -1,20 +1,22 @@
-import { globalCss } from '@/app/_styles/stitches.config'
+'use client'
 
-export const globalStyles = globalCss({
-  '*': {
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box',
-  },
+import { createGlobalStyle } from 'styled-components'
 
-  body: {
-    backgroundColor: '$gray900',
-    color: '$gray100',
-    '-webkit-font-smoothing': 'antialiased',
-  },
+export const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-  'body, input, textarea, button': {
-    fontFamily: 'var(--font-roboto-sans)',
-    fontWeight: 400,
-  },
-})
+  body {
+    background-color: ${(props) => props.theme.colors.gray900};
+    color: ${(props) => props.theme.colors.gray100};
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, input, textarea, button {
+    font-family: var(--font-roboto-sans), sans-serif;
+    font-weight: 400;
+  }
+`

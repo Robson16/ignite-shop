@@ -2,13 +2,8 @@ import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Image from 'next/image'
 
-import { globalStyles } from '@/app/_styles/global'
-import { getCssText } from '@/app/_styles/stitches.config'
-
-import logoImg from './_assets/logo.svg'
 import { Container, Header } from './_styles/pages/layout'
-
-globalStyles()
+import { Providers } from './providers'
 
 const roboto = Roboto({
   variable: '--font-roboto-sans',
@@ -20,6 +15,16 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Ignite Shop',
   description: 'Aplicação de marketplace',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({
@@ -29,23 +34,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <head>
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
-      </head>
-      <body
-        className={`${roboto.variable} antialiased`}
-        cz-shortcut-listen="true"
-      >
-        <Container>
-          <Header>
-            <Image src={logoImg} alt="Ignite Shop" />
-          </Header>
-
-          {children}
-        </Container>
+      <body className={`${roboto.variable}`} cz-shortcut-listen="true">
+        <Providers>
+          <Container>
+            <Header>
+              <Image
+                src="/logo.svg"
+                alt="Ignite Shop"
+                width={130}
+                height={53}
+              />
+            </Header>
+            {children}
+          </Container>
+        </Providers>
       </body>
     </html>
   )

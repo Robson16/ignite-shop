@@ -1,22 +1,24 @@
-import { styled } from '@/app/_styles/stitches.config'
+'use client'
 
-export const BuyButtonContainer = styled('button', {
-  marginTop: 'auto',
-  backgroundColor: '$green500',
-  border: 0,
-  color: '$white',
-  borderRadius: 8,
-  padding: '1.25rem',
-  cursor: 'pointer',
-  fontWeight: 'bold',
-  fontSize: '$md',
+import styled from 'styled-components'
 
-  '&:disabled': {
-    opacity: 0.6,
-    cursor: 'not-allowed',
-  },
+export const BuyButtonContainer = styled.button`
+  margin-top: auto;
+  background-color: ${(props) => props.theme.colors.green500};
+  border: 0;
+  color: ${(props) => props.theme.colors.white};
+  border-radius: 8px;
+  padding: 1.25rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: ${(props) => props.theme.fontSizes.md};
 
-  '&:not(:disabled):hover': {
-    backgroundColor: '$green300',
-  },
-})
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background-color: ${(props) => props.theme.colors.green300};
+  }
+`
