@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
 import Stripe from 'stripe'
@@ -43,6 +44,29 @@ export async function generateStaticParams() {
   return products.data.map((product) => ({
     id: product.id,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { id } = await params
+
+  const product = await getProduct(id)
+
+  return {
+    title: `${product.name} | Ignite Shop`,
+    description: product.description,
+    openGraph: {
+      images: [
+        {
+          url: product.imageUrl,
+          width: 800,
+          height: 600,
+          alt: product.name,
+        },
+      ],
+    },
+  }
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

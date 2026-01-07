@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import { unstable_cache } from 'next/cache'
 import Stripe from 'stripe'
 
@@ -28,6 +29,10 @@ const getProducts = unstable_cache(
   ['products-list'], // Cache key
   { revalidate: 60 }, // 60 seconds
 )
+
+export const metadata: Metadata = {
+  title: 'Ignite Shop',
+}
 
 export default async function Home() {
   const products = await getProducts()
