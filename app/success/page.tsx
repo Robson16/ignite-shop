@@ -1,14 +1,16 @@
 import Link from 'next/link'
 
-import { SuccessContainer } from './styles'
+import { ImageContainer, SuccessContainer } from './styles'
 
-export default function SuccessPage() {
+export default function Success() {
   return (
     <SuccessContainer>
-      <h1>Compra efetuada!</h1>
+      <h1>Compra efetuada</h1>
+
+      <ImageContainer></ImageContainer>
 
       <p>
-        Uhuul! Sua compra de <strong>Camiseta Beyond the Limits</strong> já está
+        Uhuul <strong>John Doe</strong>, sua <strong>Camiseta X</strong> já está
         a caminho da sua casa.
       </p>
 
