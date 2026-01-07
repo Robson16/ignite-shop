@@ -1,8 +1,10 @@
-import { styled } from '../stitches.config'
+'use client'
 
-export const HomeContainer = styled('main', {
-  display: 'flex',
-  width: '100%',
-  maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
-  marginLeft: 'auto',
-})
+import styled from 'styled-components'
+
+export const HomeContainer = styled.main`
+  display: flex;
+  width: 100%;
+  max-width: calc(100vw - ((100vw - 1180px) / 2));
+  margin-left: auto;
+`
