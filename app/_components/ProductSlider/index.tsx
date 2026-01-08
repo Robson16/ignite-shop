@@ -2,7 +2,7 @@
 
 import 'keen-slider/keen-slider.min.css'
 
-import { BasketIcon } from '@phosphor-icons/react'
+import { BasketIcon, CheckCircleIcon } from '@phosphor-icons/react'
 import { useKeenSlider } from 'keen-slider/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,7 +23,7 @@ interface ProductSliderProps {
 }
 
 export function ProductSlider({ products }: ProductSliderProps) {
-  const { addToCart } = useContext(CartContext)
+  const { addToCart, isItemInCart } = useContext(CartContext)
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -37,34 +37,47 @@ export function ProductSlider({ products }: ProductSliderProps) {
 
   return (
     <ProductSliderContainer ref={sliderRef} className="keen-slider">
-      {products.map((product) => (
-        <Link href={`/product/${product.id}`} key={product.id} prefetch={false}>
-          <ProductSlide className="keen-slider__slide">
-            <Image
-              src={product.imageUrl}
-              width={520}
-              height={480}
-              alt={product.name}
-            />
+      {products.map((product) => {
+        const isInCart = isItemInCart(product.id)
 
-            <footer>
-              <Infos>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-              </Infos>
+        return (
+          <Link
+            href={`/product/${product.id}`}
+            key={product.id}
+            prefetch={false}
+          >
+            <ProductSlide className="keen-slider__slide">
+              <Image
+                src={product.imageUrl}
+                width={520}
+                height={480}
+                alt={product.name}
+              />
 
-              <AddToCart
-                onClick={(event) => {
-                  event.preventDefault()
-                  handleAddToCart(product)
-                }}
-              >
-                <BasketIcon size={32} />
-              </AddToCart>
-            </footer>
-          </ProductSlide>
-        </Link>
-      ))}
+              <footer>
+                <Infos>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </Infos>
+
+                <AddToCart
+                  disabled={isInCart}
+                  onClick={(event) => {
+                    event.preventDefault()
+                    handleAddToCart(product)
+                  }}
+                >
+                  {isInCart ? (
+                    <CheckCircleIcon size={32} />
+                  ) : (
+                    <BasketIcon size={32} />
+                  )}
+                </AddToCart>
+              </footer>
+            </ProductSlide>
+          </Link>
+        )
+      })}
     </ProductSliderContainer>
   )
 }

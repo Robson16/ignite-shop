@@ -57,12 +57,12 @@ export const Infos = styled.div`
   gap: 1rem;
 
   strong {
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+    font-size: ${({ theme }) => theme.fontSizes.md};
     color: ${({ theme }) => theme.colors.gray100};
   }
 
   span {
-    font-size: ${({ theme }) => theme.fontSizes.md};
+    font-size: ${({ theme }) => theme.fontSizes.lg};
     font-weight: bold;
     color: ${({ theme }) => theme.colors.green300};
   }
@@ -80,7 +80,11 @@ export const AddToCart = styled.button`
   transition: background-color 0.2s ease-in-out;
   cursor: pointer;
 
-  &:hover {
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
     background-color: ${({ theme }) => theme.colors.green300};
   }
 `

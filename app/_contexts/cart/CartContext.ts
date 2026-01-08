@@ -7,6 +7,7 @@ interface CartContextData {
   cartTotal: number
   addToCart: (product: Product) => void
   removeFromCart: (productId: string) => void
+  isItemInCart: (productId: string) => boolean
 }
 
 export const CartContext = createContext({} as CartContextData)

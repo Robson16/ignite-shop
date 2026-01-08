@@ -67,6 +67,13 @@ export function CartProvider({ children }: CartContextProviderProps) {
     [dispatch],
   )
 
+  const isItemInCart = useCallback(
+    (productId: string) => {
+      return cartItems.some((item) => item.id === productId)
+    },
+    [cartItems],
+  )
+
   return (
     <CartContext.Provider
       value={{
@@ -74,6 +81,7 @@ export function CartProvider({ children }: CartContextProviderProps) {
         cartTotal,
         addToCart,
         removeFromCart,
+        isItemInCart,
       }}
     >
       {children}
