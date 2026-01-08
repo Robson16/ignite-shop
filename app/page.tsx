@@ -23,6 +23,9 @@ const getProducts = unstable_cache(
           style: 'currency',
           currency: 'BRL',
         }).format((price.unit_amount || 0) / 100),
+        numberPrice: price.unit_amount || 0,
+        description: product.description,
+        defaultPriceId: price.id,
       }
     })
   },
