@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Container, Header } from './_styles/pages/layout'
 import { Providers } from './providers'
@@ -38,12 +39,14 @@ export default function RootLayout({
         <Providers>
           <Container>
             <Header>
-              <Image
-                src="/logo.svg"
-                alt="Ignite Shop"
-                width={130}
-                height={53}
-              />
+              <Link href="/">
+                <Image
+                  src="/logo.svg"
+                  alt="Ignite Shop"
+                  width={130}
+                  height={53}
+                />
+              </Link>
             </Header>
             {children}
           </Container>

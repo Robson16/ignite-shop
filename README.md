@@ -17,7 +17,7 @@
 
 O **Ignite Shop** é uma aplicação de marketplace completa integrada com a API do Stripe. Este projeto foi originalmente desenvolvido durante a trilha Ignite da Rocketseat e evoluído tecnicamente para as versões mais recentes das tecnologias.
 
-O maior destaque deste projeto foi a **migração completa do Next.js 12 (Pages Router) para o Next.js 16 (App Router)**. Como o Stitches (utilizado originalmente) foi descontinuado, realizei a transição para **Styled Components**, implementando um Registro de Estilos (*Style Registry*) para garantir a compatibilidade com a renderização no servidor (SSR) e evitar o *layout shift*.
+O maior destaque deste projeto foi a **migração completa do Next.js 12 (Pages Router) para o Next.js 16 (App Router)**. Como o Stitches (utilizado originalmente) foi descontinuado, realizei a transição para **Styled Components**, implementando um Registro de Estilos (_Style Registry_) para garantir a compatibilidade com a renderização no servidor (SSR) e evitar o _layout shift_.
 
 ## 🚀 Tecnologias
 
@@ -38,7 +38,8 @@ app/
 ├── product/[id]/       # Página dinâmica de produto (SSG)
 ├── success/            # Página de confirmação de compra (Server Side)
 ├── _assets/            # Recursos de imagem e logo
-├── _components/        # Componentes compartilhados (BuyButton, etc.) 
+├── _components/        # Componentes compartilhados (BuyButton, etc.)
+├── _contexts/          # Gerenciamento de estado (CartContext)
 ├── _lib/               # Configurações de bibliotecas (Stripe, SC Registry)
 ├── _services/          # Lógica de integração com serviços externos
 ├── _styles/            # Tema e Estilos Globais
@@ -49,7 +50,7 @@ app/
 ├── providers.tsx       # Wrapper de Providers de Cliente
 └── page.tsx            # Home da aplicação (Landing de produtos)
 public/                 # Favicons, Manifest e ativos estáticos
-``` 
+```
 
 ## Começar
 
@@ -88,6 +89,7 @@ npm start
 ```
 
 ## Scripts úteis
+
 - `npm run dev` — Executa em modo desenvolvedor com Turbopack.
 - `npm run build` — Compila para produção validando tipos e lint.
 - `npm run lint` — Executa a verificação do ESLint.
