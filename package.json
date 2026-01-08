@@ -36,6 +36,7 @@
     "check-up": "npm run format && npm run lint:fix"
   },
   "dependencies": {
+    "@phosphor-icons/react": "2.1.10",
     "axios": "1.13.2",
     "immer": "11.1.3",
     "keen-slider": "6.8.6",

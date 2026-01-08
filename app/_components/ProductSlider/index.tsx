@@ -2,24 +2,28 @@
 
 import 'keen-slider/keen-slider.min.css'
 
+import { BasketIcon } from '@phosphor-icons/react'
 import { useKeenSlider } from 'keen-slider/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useContext } from 'react'
 
-import { Product, ProductSliderContainer } from './styles'
+import { CartContext } from '@/app/_contexts/cart/CartContext'
+import { Product } from '@/app/_contexts/cart/CartTypes'
 
-interface Product {
-  id: string
-  name: string
-  imageUrl: string
-  price: string
-}
+import {
+  AddToCart,
+  Infos,
+  ProductSlide,
+  ProductSliderContainer,
+} from './styles'
 
 interface ProductSliderProps {
   products: Product[]
 }
 
 export function ProductSlider({ products }: ProductSliderProps) {
+  const { addToCart } = useContext(CartContext)
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -27,11 +31,15 @@ export function ProductSlider({ products }: ProductSliderProps) {
     },
   })
 
+  function handleAddToCart(product: Product) {
+    addToCart(product)
+  }
+
   return (
     <ProductSliderContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => (
         <Link href={`/product/${product.id}`} key={product.id} prefetch={false}>
-          <Product className="keen-slider__slide">
+          <ProductSlide className="keen-slider__slide">
             <Image
               src={product.imageUrl}
               width={520}
@@ -40,10 +48,21 @@ export function ProductSlider({ products }: ProductSliderProps) {
             />
 
             <footer>
-              <strong>{product.name}</strong>
-              <span>{product.price}</span>
+              <Infos>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </Infos>
+
+              <AddToCart
+                onClick={(event) => {
+                  event.preventDefault()
+                  handleAddToCart(product)
+                }}
+              >
+                <BasketIcon size={32} />
+              </AddToCart>
             </footer>
-          </Product>
+          </ProductSlide>
         </Link>
       ))}
     </ProductSliderContainer>
