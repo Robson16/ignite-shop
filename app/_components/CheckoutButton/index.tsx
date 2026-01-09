@@ -3,17 +3,19 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-import { BuyButtonContainer } from './styles'
+import { CheckoutButtonContainer } from './styles'
 
-interface BuyButtonProps {
+interface CheckoutButtonProps {
   defaultPriceId: string
 }
 
-export default function BuyButton({ defaultPriceId }: BuyButtonProps) {
+export default function CheckoutButton({
+  defaultPriceId,
+}: CheckoutButtonProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false)
 
-  async function handleBuyProduct() {
+  async function handleCheckoutProduct() {
     try {
       setIsCreatingCheckoutSession(true)
 
@@ -36,11 +38,11 @@ export default function BuyButton({ defaultPriceId }: BuyButtonProps) {
   }
 
   return (
-    <BuyButtonContainer
+    <CheckoutButtonContainer
       disabled={isCreatingCheckoutSession}
-      onClick={handleBuyProduct}
+      onClick={handleCheckoutProduct}
     >
       Comprar agora
-    </BuyButtonContainer>
+    </CheckoutButtonContainer>
   )
 }

@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const BuyButtonContainer = styled.button`
+export const CheckoutButtonContainer = styled.button`
   margin-top: auto;
   background-color: ${(props) => props.theme.colors.green500};
   border: 0;

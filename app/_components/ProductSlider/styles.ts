@@ -67,24 +67,3 @@ export const Infos = styled.div`
     color: ${({ theme }) => theme.colors.green300};
   }
 `
-
-export const AddToCart = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0.875rem;
-  background-color: ${({ theme }) => theme.colors.green500};
-  color: ${({ theme }) => theme.colors.white};
-  border: 0;
-  border-radius: 8px;
-  transition: background-color 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-
-  &:not(:disabled):hover {
-    background-color: ${({ theme }) => theme.colors.green300};
-  }
-`
