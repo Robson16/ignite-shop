@@ -28,6 +28,8 @@ export default function AddToCartButton({
     addToCart(product)
   }
 
+  const buttonText = isInCart ? 'Produto na sacola' : 'Colocar na sacola'
+
   return (
     <AddToCartContainer
       {...props}
@@ -36,11 +38,12 @@ export default function AddToCartButton({
         handleAddToCart(product)
       }}
       disabled={isInCart}
+      aria-label={hasText ? undefined : buttonText}
     >
       {hasIcon &&
         (isInCart ? <CheckCircleIcon size={32} /> : <BasketIcon size={32} />)}
 
-      {hasText && (isInCart ? 'Produto na sacola' : 'Colocar na sacola')}
+      {hasText && buttonText}
     </AddToCartContainer>
   )
 }
