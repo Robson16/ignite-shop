@@ -1,6 +1,14 @@
 'use client'
 
-import { ReactNode, useCallback, useEffect, useMemo, useReducer } from 'react'
+import {
+  ReactNode,
+  startTransition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react'
 
 import {
   addToCartAction,
@@ -10,6 +18,8 @@ import {
 import { CartContext } from './CartContext'
 import { cartReducer } from './CartReducer'
 import { Product } from './CartTypes'
+
+const CART_STORAGE_KEY = '@ignite-shop:cart-state-1.0.0'
 
 interface CartContextProviderProps {
   children: ReactNode
@@ -21,21 +31,28 @@ const initialCartState = {
 
 export function getCartTotal(items: Product[]) {
   return items.reduce(
-    (sum: number, product: Product) => sum + product.numberPrice,
+    (sum: number, product: Product) =>
+      sum + (product.quantity || 1) * product.numberPrice,
     0,
   )
 }
 
+export function getCartQuantity(items: Product[]) {
+  return items.reduce((sum, product) => sum + (product.quantity || 1), 0)
+}
+
 export function CartProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(cartReducer, initialCartState)
+  const [isHydrated, setIsHydrated] = useState(false)
 
   const { cartItems } = cartState
 
   const cartTotal = useMemo(() => getCartTotal(cartItems), [cartItems])
+  const cartQuantity = useMemo(() => getCartQuantity(cartItems), [cartItems])
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('@ignite-shop:cart-state-1.0.0')
+      const stored = localStorage.getItem(CART_STORAGE_KEY)
       if (!stored) return
       const parsed = JSON.parse(stored)
       const items = Array.isArray(parsed.cartItems) ? parsed.cartItems : []
@@ -46,12 +63,29 @@ export function CartProvider({ children }: CartContextProviderProps) {
   }, [dispatch])
 
   useEffect(() => {
-    const stateToPersist = { cartItems: cartState.cartItems }
-    localStorage.setItem(
-      '@ignite-shop:cart-state-1.0.0',
-      JSON.stringify(stateToPersist),
-    )
-  }, [cartState.cartItems])
+    const stored = localStorage.getItem(CART_STORAGE_KEY)
+
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed.cartItems)) {
+          dispatch(hydrateCartAction(parsed.cartItems))
+        }
+      } catch (err) {
+        console.error('Erro ao carregar carrinho:', err)
+      }
+    }
+
+    startTransition(() => {
+      setIsHydrated(true)
+    })
+  }, [])
+
+  useEffect(() => {
+    if (isHydrated) {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({ cartItems }))
+    }
+  }, [cartItems, isHydrated])
 
   const addToCart = useCallback(
     (data: Product) => {
@@ -79,6 +113,8 @@ export function CartProvider({ children }: CartContextProviderProps) {
       value={{
         cartItems,
         cartTotal,
+        cartQuantity,
+        isHydrated,
         addToCart,
         removeFromCart,
         isItemInCart,
