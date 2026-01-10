@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from './_components/CartIcon'
+import CartSidebar from './_components/CartSidebar'
 import { Container, Header } from './_styles/pages/layout'
 import { Providers } from './providers'
 
@@ -50,7 +51,8 @@ export default function RootLayout({
                 />
               </Link>
 
-              <CartIcon href={`/`} />
+              <CartIcon />
+              <CartSidebar />
             </Header>
             {children}
           </Container>

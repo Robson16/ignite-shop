@@ -1,9 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import styled from 'styled-components'
 
-export const CartIconContainer = styled(Link)`
+export const CartIconContainer = styled.button`
   position: relative;
   display: flex;
   align-items: center;

@@ -6,13 +6,18 @@ export const AddToCartContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
+
   padding: 1rem 0.875rem;
-  background-color: ${({ theme }) => theme.colors.green500};
+  margin-top: auto;
+
   font-size: ${(props) => props.theme.fontSizes.md};
   color: ${({ theme }) => theme.colors.white};
+
   border: 0;
   border-radius: 8px;
+
+  background-color: ${({ theme }) => theme.colors.green500};
+
   transition: background-color 0.2s ease-in-out;
   cursor: pointer;
 

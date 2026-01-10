@@ -1,16 +1,19 @@
 'use client'
 
 import axios from 'axios'
-import { useState } from 'react'
+import { ButtonHTMLAttributes, ReactNode, useState } from 'react'
 
 import { CheckoutButtonContainer } from './styles'
 
-interface CheckoutButtonProps {
+interface CheckoutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   defaultPriceId: string
+  children: ReactNode
 }
 
 export default function CheckoutButton({
   defaultPriceId,
+  children,
+  ...props
 }: CheckoutButtonProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false)
@@ -41,8 +44,9 @@ export default function CheckoutButton({
     <CheckoutButtonContainer
       disabled={isCreatingCheckoutSession}
       onClick={handleCheckoutProduct}
+      {...props}
     >
-      Comprar agora
+      {children}
     </CheckoutButtonContainer>
   )
 }

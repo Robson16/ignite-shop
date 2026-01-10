@@ -51,25 +51,19 @@ export function CartProvider({ children }: CartContextProviderProps) {
   const cartQuantity = useMemo(() => getCartQuantity(cartItems), [cartItems])
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(CART_STORAGE_KEY)
-      if (!stored) return
-      const parsed = JSON.parse(stored)
-      const items = Array.isArray(parsed.cartItems) ? parsed.cartItems : []
-      dispatch(hydrateCartAction(items))
-    } catch {
-      // ignore malformed storage
-    }
-  }, [dispatch])
-
-  useEffect(() => {
     const stored = localStorage.getItem(CART_STORAGE_KEY)
 
     if (stored) {
       try {
         const parsed = JSON.parse(stored)
+
         if (Array.isArray(parsed.cartItems)) {
-          dispatch(hydrateCartAction(parsed.cartItems))
+          const sanitizedItems = parsed.cartItems.map((item: Product) => ({
+            ...item,
+            numberPrice: item.numberPrice || 0,
+          }))
+
+          dispatch(hydrateCartAction(sanitizedItems))
         }
       } catch (err) {
         console.error('Erro ao carregar carrinho:', err)
