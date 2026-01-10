@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import Stripe from 'stripe'
 
 import AddToCartButton from '@/app/_components/AddToCartButton'
@@ -73,6 +74,11 @@ export async function generateMetadata({
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
+
+  if (id.includes('.') || !id.startsWith('prod_')) {
+    return notFound()
+  }
+
   const product = await getProduct(id)
 
   return (
