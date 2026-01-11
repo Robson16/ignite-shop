@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { unstable_cache } from 'next/cache'
 import Stripe from 'stripe'
 
-import { ProductSlider } from './_components/ProductSlider'
-import { stripe } from './_services/stripe'
-import { HomeContainer } from './_styles/pages/home'
+import { ProductSlider } from '@/app/_components/ProductSlider'
+import { stripe } from '@/app/_services/stripe'
+import { HomeContainer } from '@/app/_styles/pages/home'
 
 const getProducts = unstable_cache(
   async () => {

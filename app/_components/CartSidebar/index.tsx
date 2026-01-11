@@ -4,10 +4,10 @@ import { XIcon } from '@phosphor-icons/react'
 import Image from 'next/image'
 import { useContext } from 'react'
 
+import CheckoutButton from '@/app/_components/CheckoutButton'
 import { CartContext } from '@/app/_contexts/cart/CartContext'
 import { UIContext } from '@/app/_contexts/ui/UIContext'
 
-import CheckoutButton from '../CheckoutButton'
 import {
   CartSidebarActions,
   CartSidebarCloseButton,

@@ -3,9 +3,10 @@ import { Roboto } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import CartIcon from './_components/CartIcon'
-import CartSidebar from './_components/CartSidebar'
-import { Container, Header } from './_styles/pages/layout'
+import CartIcon from '@/app/_components/CartIcon'
+import CartSidebar from '@/app/_components/CartSidebar'
+import { Container, Header } from '@/app/_styles/pages/layout'
+
 import { Providers } from './providers'
 
 const roboto = Roboto({

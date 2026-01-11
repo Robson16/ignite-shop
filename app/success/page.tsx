@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import Stripe from 'stripe'
 
-import { stripe } from '../_services/stripe'
+import { stripe } from '@/app/_services/stripe'
+
 import { ClearCartOnSuccess } from './_components/ClearCartOnSuccess'
 import { ImagesGroup, ImageWrapper, SuccessContainer } from './styles'
 

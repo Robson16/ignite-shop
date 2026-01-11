@@ -6,9 +6,9 @@ import { useKeenSlider } from 'keen-slider/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import AddToCartButton from '@/app/_components/AddToCartButton'
 import { Product } from '@/app/_contexts/cart/CartTypes'
 
-import AddToCartButton from '../AddToCartButton'
 import { Infos, ProductSlide, ProductSliderContainer } from './styles'
 
 interface ProductSliderProps {
