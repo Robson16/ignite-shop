@@ -1,9 +1,11 @@
 import { Metadata } from 'next'
 import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import Stripe from 'stripe'
 
-import BuyButton from '@/app/_components/BuyButton'
+import AddToCartButton from '@/app/_components/AddToCartButton'
+import { Product } from '@/app/_contexts/cart/CartTypes'
 import { stripe } from '@/app/_services/stripe'
 
 import { ImageContainer, ProductContainer, ProductDetails } from './styles'
@@ -13,7 +15,7 @@ interface ProductPageProps {
 }
 
 const getProduct = unstable_cache(
-  async (productId: string) => {
+  async (productId: string): Promise<Product> => {
     const product = await stripe.products.retrieve(productId, {
       expand: ['default_price'],
     })
@@ -28,6 +30,7 @@ const getProduct = unstable_cache(
         style: 'currency',
         currency: 'BRL',
       }).format((price.unit_amount || 0) / 100),
+      numberPrice: price.unit_amount || 0,
       description: product.description,
       defaultPriceId: price.id,
     }
@@ -71,6 +74,11 @@ export async function generateMetadata({
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
+
+  if (id.includes('.') || !id.startsWith('prod_')) {
+    return notFound()
+  }
+
   const product = await getProduct(id)
 
   return (
@@ -85,7 +93,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <p>{product.description}</p>
 
-        <BuyButton defaultPriceId={product.defaultPriceId} />
+        <AddToCartButton product={product}></AddToCartButton>
       </ProductDetails>
     </ProductContainer>
   )

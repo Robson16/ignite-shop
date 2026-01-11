@@ -15,41 +15,46 @@
 
 ## Descrição
 
-O **Ignite Shop** é uma aplicação de marketplace completa integrada com a API do Stripe. Este projeto foi originalmente desenvolvido durante a trilha Ignite da Rocketseat e evoluído tecnicamente para as versões mais recentes das tecnologias.
+O **Ignite Shop** é uma aplicação full-stack de e-commerce que simula uma loja de camisetas, com catálogo de produtos, carrinho de compras e integração de pagamentos com a API do Stripe.
 
-O maior destaque deste projeto foi a **migração completa do Next.js 12 (Pages Router) para o Next.js 16 (App Router)**. Como o Stitches (utilizado originalmente) foi descontinuado, realizei a transição para **Styled Components**, implementando um Registro de Estilos (*Style Registry*) para garantir a compatibilidade com a renderização no servidor (SSR) e evitar o *layout shift*.
+Este projeto representa uma evolução técnica significativa de sua versão original, destacando-se pela **migração completa do Next.js 12 (Pages Router) para a arquitetura mais recente do Next.js (App Router)**. Um desafio central foi a substituição da biblioteca de CSS-in-JS Stitches (descontinuada) por **Styled Components**. Para isso, foi implementado um _Style Registry_ customizado, garantindo a correta extração e hidratação dos estilos em ambiente de renderização no servidor (SSR), eliminando o _layout shift_ e assegurando uma performance de renderização otimizada.
 
-## 🚀 Tecnologias
+## Tecnologias Utilizadas
 
-- **Next.js 16** (App Router & Server Components)
-- **React 19**
+- **Next.js** (App Router & Server Components)
+- **React**
 - **TypeScript**
 - **Styled Components** (com implementação de Registry)
 - **Stripe API** (Checkout & Webhooks)
 - **Keen Slider** (Carrossel de produtos)
 
-## Estrutura do Projeto
+## Funcionalidades
 
-Abaixo, a organização de pastas focada em escalabilidade e separação de conceitos no App Router:
+- **Catálogo de Produtos**: Página inicial com produtos carregados via Geração de Site Estático (SSG) para máxima performance.
+- **Páginas de Produto Dinâmicas**: Detalhes de cada produto gerados estaticamente no momento do build.
+- **Carrinho de Compras**: Gerenciamento de estado com Context API e persistência de dados no `localStorage`.
+- **Checkout com Múltiplos Itens**: Integração com a API do Stripe para criar sessões de pagamento.
+- **Página de Sucesso**: Confirmação da compra renderizada no servidor, exibindo os produtos adquiridos e limpando o carrinho do cliente.
+
+## Estrutura de Diretórios
+
+A organização de pastas do projeto foi adaptada para o App Router, focando em escalabilidade e separação de responsabilidades:
 
 ```text
 app/
-├── api/                # Route Handlers (Integração com Stripe)
-├── product/[id]/       # Página dinâmica de produto (SSG)
-├── success/            # Página de confirmação de compra (Server Side)
-├── _assets/            # Recursos de imagem e logo
-├── _components/        # Componentes compartilhados (BuyButton, etc.) 
-├── _lib/               # Configurações de bibliotecas (Stripe, SC Registry)
-├── _services/          # Lógica de integração com serviços externos
-├── _styles/            # Tema e Estilos Globais
-│   ├── pages/          # Estilos específicos de cada página
-│   ├── global.ts       # Reset e definições globais
-│   └── theme.ts        # Design Tokens (Cores, Fontes)
-├── layout.tsx          # Layout principal e Metadados
-├── providers.tsx       # Wrapper de Providers de Cliente
-└── page.tsx            # Home da aplicação (Landing de produtos)
-public/                 # Favicons, Manifest e ativos estáticos
-``` 
+├── api/                # Route Handlers para a API (ex: /api/checkout)
+├── product/[id]/       # Rota dinâmica para a página de detalhes do produto
+├── success/            # Rota da página de sucesso pós-compra
+│   └── _components/    # Componentes de cliente específicos da rota (ex: ClearCartOnSuccess)
+├── _components/        # Componentes globais e compartilhados da aplicação
+├── _contexts/          # Contextos da aplicação (ex: CartContext)
+├── _services/          # Configuração e inicialização de serviços (ex: Stripe)
+├── _styles/            # Estilos globais e tema da aplicação
+├── layout.tsx          # Layout raiz da aplicação
+├── page.tsx            # Página inicial (Home)
+└── providers.tsx       # Provedores de contexto para o lado do cliente
+public/                 # Ativos estáticos (imagens, fontes, etc.)
+```
 
 ## Começar
 
@@ -88,6 +93,7 @@ npm start
 ```
 
 ## Scripts úteis
+
 - `npm run dev` — Executa em modo desenvolvedor com Turbopack.
 - `npm run build` — Compila para produção validando tipos e lint.
 - `npm run lint` — Executa a verificação do ESLint.

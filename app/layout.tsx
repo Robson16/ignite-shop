@@ -1,8 +1,12 @@
 import { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Container, Header } from './_styles/pages/layout'
+import CartIcon from '@/app/_components/CartIcon'
+import CartSidebar from '@/app/_components/CartSidebar'
+import { Container, Header } from '@/app/_styles/pages/layout'
+
 import { Providers } from './providers'
 
 const roboto = Roboto({
@@ -38,12 +42,18 @@ export default function RootLayout({
         <Providers>
           <Container>
             <Header>
-              <Image
-                src="/logo.svg"
-                alt="Ignite Shop"
-                width={130}
-                height={53}
-              />
+              <Link href="/">
+                <Image
+                  src="/logo.svg"
+                  alt="Ignite Shop"
+                  width={130}
+                  height={53}
+                  priority
+                />
+              </Link>
+
+              <CartIcon />
+              <CartSidebar />
             </Header>
             {children}
           </Container>

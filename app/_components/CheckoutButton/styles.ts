@@ -2,16 +2,20 @@
 
 import styled from 'styled-components'
 
-export const BuyButtonContainer = styled.button`
+export const CheckoutButtonContainer = styled.button`
+  width: 100%;
   margin-top: auto;
+  padding: 1.25rem;
+
+  font-size: ${(props) => props.theme.fontSizes.md};
+  font-weight: bold;
+  color: ${(props) => props.theme.colors.white};
+
   background-color: ${(props) => props.theme.colors.green500};
   border: 0;
-  color: ${(props) => props.theme.colors.white};
   border-radius: 8px;
-  padding: 1.25rem;
+
   cursor: pointer;
-  font-weight: bold;
-  font-size: ${(props) => props.theme.fontSizes.md};
 
   &:disabled {
     opacity: 0.6;

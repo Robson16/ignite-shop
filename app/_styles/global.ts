@@ -18,5 +18,6 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font-family: var(--font-roboto-sans), sans-serif;
     font-weight: 400;
+    font-size: 1rem;
   }
 `
