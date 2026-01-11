@@ -13,6 +13,7 @@ export const CartActionsType = {
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   HYDRATE_CART: 'HYDRATE_CART',
+  CLEAR_CART: 'CLEAR_CART',
 } as const
 
 interface AddToCart {
@@ -36,4 +37,8 @@ interface HydrateCart {
   }
 }
 
-export type CartActions = AddToCart | RemoveFromCart | HydrateCart
+interface ClearCart {
+  type: typeof CartActionsType.CLEAR_CART
+}
+
+export type CartActions = AddToCart | RemoveFromCart | HydrateCart | ClearCart

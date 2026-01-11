@@ -26,3 +26,9 @@ export function hydrateCartAction(cartItems: Product[]) {
     },
   }
 }
+
+export function clearCartAction() {
+  return {
+    type: CartActionsType.CLEAR_CART,
+  }
+}

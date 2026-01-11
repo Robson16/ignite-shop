@@ -12,6 +12,7 @@ import {
 
 import {
   addToCartAction,
+  clearCartAction,
   hydrateCartAction,
   removeFromCartAction,
 } from './CartActions'
@@ -88,6 +89,11 @@ export function CartProvider({ children }: CartContextProviderProps) {
     [dispatch],
   )
 
+  const clearCart = useCallback(() => {
+    dispatch(clearCartAction())
+    localStorage.removeItem(CART_STORAGE_KEY)
+  }, [dispatch])
+
   const removeFromCart = useCallback(
     (productId: string) => {
       dispatch(removeFromCartAction(productId))
@@ -111,6 +117,7 @@ export function CartProvider({ children }: CartContextProviderProps) {
         isHydrated,
         addToCart,
         removeFromCart,
+        clearCart,
         isItemInCart,
       }}
     >

@@ -65,7 +65,7 @@ export default function CartSidebar() {
         </div>
       </CartSidebarResume>
       <CartSidebarActions>
-        <CheckoutButton defaultPriceId={''}>Finalizar compra</CheckoutButton>
+        <CheckoutButton>Finalizar compra</CheckoutButton>
       </CartSidebarActions>
     </CartSidebarContainer>
   )
